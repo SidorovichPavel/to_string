@@ -38,8 +38,8 @@ namespace ext
 	}
 
 	template<class T>
-	auto to_string(const T& _Conteiner) -> 
-		decltype(::ext::to_string(std::declval<typename T::iterator::value_type>()))
+	auto to_string(const T& _Conteiner) -> std::enable_if_t<!std::is_same_v<T, std::string>,
+		decltype(::ext::to_string(std::declval<typename T::iterator::value_type>()))>
 	{
 		std::string result;
 		for (auto&& elem : _Conteiner)
@@ -58,6 +58,10 @@ namespace ext
 		return (... += (::ext::to_string(std::forward<Args>(args)) + " "));
 	}
 
-
+	template<class T, class U>
+	std::string to_string(const std::pair<T, U>& _Pair)
+	{
+		return { "{" + ::ext::to_string(_Pair.first) + ":" + ::ext::to_string(_Pair.second)+"}"};
+	}
 
 }

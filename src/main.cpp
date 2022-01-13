@@ -1,5 +1,6 @@
 #include <iostream>
 #include <array>
+#include <map>
 
 #include "to_string.hpp"
 
@@ -38,6 +39,18 @@ int main()
 	std::cout << ext::to_string(21.5f) << " " << ext::to_string(190) << " " << ext::to_string(true) << std::endl;
 	std::cout << ext::to_string(21.5f, 190, true) << std::endl;
 
+	std::map<int, std::string> humans;
+	humans[20] = "Pavel";
+	humans[21] = "RayeS";
 
+	std::string pairs;
+	for (auto& pair : humans)
+	{
+		if (!pairs.empty())
+			pairs += ",";
+		pairs += ext::to_string(pair);
+	}
+	pairs += ";";
+	std::cout << pairs << std::endl;
 	return 0;
 }
