@@ -43,14 +43,11 @@ int main()
 	humans[20] = "Pavel";
 	humans[21] = "RayeS";
 
-	std::string pairs;
-	for (auto& pair : humans)
-	{
-		if (!pairs.empty())
-			pairs += ",";
-		pairs += ext::to_string(pair);
-	}
-	pairs += ";";
-	std::cout << pairs << std::endl;
+	std::cout << ext::to_string(humans) << std::endl;
+
+	std::cout << ext::to_string(std::string("hello")) << std::endl;
+
+	//decltype(auto) a = std::forward<std::string>(str);
+
 	return 0;
 }
