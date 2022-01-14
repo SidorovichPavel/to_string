@@ -47,7 +47,5 @@ int main()
 
 	std::cout << ext::to_string(std::string("hello")) << std::endl;
 
-	//decltype(auto) a = std::forward<std::string>(str);
-
 	return 0;
 }

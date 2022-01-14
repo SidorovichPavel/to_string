@@ -22,29 +22,16 @@ namespace ext
 	}
 
 	template<class T>
-	auto to_string(const T& _Val) -> 
-		std::enable_if_t<std::is_convertible_v<T, std::string>, std::string>
-	{
-		return std::string(_Val);
-	}
-
-	template<class T>
 	auto to_string(T&& _Val) ->
 		std::enable_if_t<std::is_convertible_v<T, std::string>, std::string>
 	{
-		return std::string(std::move(_Val));
-	}
-
-	template<class T>
-	auto to_string(const T& _Val) -> std::enable_if_t<std::is_convertible_v<T, int>, std::string>
-	{
-		return ::std::to_string(_Val);
+		return std::string(std::forward<T>(_Val));
 	}
 
 	template<class T>
 	auto to_string(T&& _Val) -> std::enable_if_t<std::is_convertible_v<T, int>, std::string>
 	{
-		return ::std::to_string(std::move(_Val));
+		return ::std::to_string(std::forward<T>(_Val));
 	}
 
 	template<class T, class U>
